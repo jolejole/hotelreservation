@@ -13,7 +13,7 @@ namespace HotelReservations
     }
     /// <summary>
     /// function @Hotel/CheckAvailability only checks if booking request is possible
-    /// system does not saving reservations and really does not know which room is assigned to every reservation 
+    /// system does not save reservations and really does not know which room is assigned to particular reservation 
     /// but it's written in that way just for sake of showing the design, however it would be easy to change this system to work like that
     /// </summary>
     public class Hotel
@@ -22,9 +22,9 @@ namespace HotelReservations
         private readonly ICollection<Room> rooms;
         private readonly RoomService roomService;
         /// <summary>
-        /// creates an hotel reservation system 
+        /// creates an hotel reservation system and assigns rooms to hotel
         /// </summary>
-        /// <param name="roomCount">hotel reservation system will be in charge of 'roomCount' rooms</param>
+        /// <param name="roomCount">hotel will have 'roomCount' rooms & hotel reservation system will be in charge of 'roomCount' rooms</param>
         public Hotel(int roomCount)
         {
             this.rooms = new List<Room>();
@@ -46,7 +46,7 @@ namespace HotelReservations
         }
 
         /// <summary>
-        /// following method checks if booking request is possible and if so will create add a reservation
+        /// following method checks if booking request is possible and if so will create a reservation
         /// </summary>
         /// <param name="reservation"></param>
         /// <returns></returns>
