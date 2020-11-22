@@ -12,7 +12,6 @@ namespace HotelReservations
         }
     }
     /// <summary>
-    /// function that you asked me to implement doesn't have that much space for quality/design valuation
     /// function @Hotel/CheckAvailability only checks if booking request is possible
     /// system does not saving reservations and really does not know which room is assigned to every reservation 
     /// but it's written in that way just for sake of showing the design, however it would be easy to change this system to work like that
@@ -106,7 +105,7 @@ namespace HotelReservations
         /// <summary>
         /// key represents day, value represents number of rooms booked for that particular date
         /// </summary>
-        private Dictionary<int, int> calendar;
+        private int[] calendar;
 
         private readonly int roomCount;
 
@@ -120,11 +119,9 @@ namespace HotelReservations
         /// initialization of calendar structure
         /// </summary>
         /// <param name="days"></param>
-        private void InitCalendar(int days = 365)
+        private void InitCalendar(int days = 366)
         {
-            calendar = new Dictionary<int, int>();
-            for (int i = 0; i <= 365; i++)
-                calendar[i] = 0;
+            calendar = new int [days];
         }
 
         /// <summary>
@@ -159,7 +156,7 @@ namespace HotelReservations
         private bool TrySchedule(Reservation reservation)
         {
             for (int i = reservation.StartDate; i <= reservation.EndDate; i++)
-                if (calendar[i] + 1 > roomCount)
+                if (calendar[i] == roomCount)
                     return false;
             ConfirmReservation(reservation);
             return true;
