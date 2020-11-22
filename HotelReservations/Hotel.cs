@@ -4,6 +4,13 @@ using System.Text;
 
 namespace HotelReservations
 {
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+
+        }
+    }
     /// <summary>
     /// function that you asked me to implement doesn't have that much space for quality/design valuation
     /// function @Hotel/CheckAvailability only checks if booking request is possible
